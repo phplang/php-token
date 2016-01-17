@@ -27,6 +27,20 @@
 
 #include "php.h"
 
+typedef int (*on_token_callback_t)(void*, int id,
+                                   const char *text, int len,
+                                   int lineno);
+
+typedef int (*on_feedback_callback_t)(void*, int id);
+
+ZEND_BEGIN_MODULE_GLOBALS(token)
+	on_token_callback_t on_token;
+	on_feedback_callback_t on_feedback;
+	void *callback_data;
+ZEND_END_MODULE_GLOBALS(token);
+
+ZEND_EXTERN_MODULE_GLOBALS(token);
+#define TOKENG(v) ZEND_MODULE_GLOBALS_ACCESSOR(token, v)
 extern zend_module_entry token_module_entry;
 #define phpext_token_ptr &token_module_entry
 
