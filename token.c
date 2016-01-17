@@ -209,26 +209,26 @@ static void do_tokenize(INTERNAL_FUNCTION_PARAMETERS, zend_bool is_file) {
 }
 
 /* {{{ proto array Token::tokenizeString(string $script[ int $flags = 0])
-Essentially token_get_all(), but returns an array of Token objects
-*/
+Essentially token_get_all(), but returns an array of Token objects */
 ZEND_BEGIN_ARG_INFO_EX(Token_tokenizeString_arginfo, 0, ZEND_RETURN_VALUE, 0)
 	ZEND_ARG_INFO(0, script)
 	ZEND_ARG_INFO(0, flags)
 ZEND_END_ARG_INFO();
 static PHP_METHOD(Token, tokenizeString) {
 	do_tokenize(INTERNAL_FUNCTION_PARAM_PASSTHRU, 0);
-} /* }}} */
+}
+/* }}} */
 
 /* {{{ proto array Token::tokenizeFile(string $filename[, int $flags = 0])
-Parse directly from a file, rather than a string
-*/
+Parse directly from a file, rather than a string */
 ZEND_BEGIN_ARG_INFO_EX(Token_tokenizeFile_arginfo, 0, ZEND_RETURN_VALUE, 0)
 	ZEND_ARG_INFO(0, filename)
 	ZEND_ARG_INFO(0, flags)
 ZEND_END_ARG_INFO();
 static PHP_METHOD(Token, tokenizeFile) {
 	do_tokenize(INTERNAL_FUNCTION_PARAM_PASSTHRU, 1);
-} /* }}} */
+}
+/* }}} */
 
 /* {{{ proto string Token::name(int $id) */
 ZEND_BEGIN_ARG_INFO_EX(Token_name_arginfo, 0, ZEND_RETURN_VALUE, 0)
@@ -258,7 +258,8 @@ static PHP_METHOD(Token, name) {
 	}
 
 	token_name(INTERNAL_FUNCTION_PARAM_PASSTHRU);
-} /* }}} */
+}
+/* }}} */
 
 /* {{{ methods */
 static zend_function_entry token_methods[] = {
@@ -287,7 +288,8 @@ static PHP_MINIT_FUNCTION(token) {
 	  "lineno", sizeof("lineno") - 1, 0, ZEND_ACC_PUBLIC);
 
 	return SUCCESS;
-} /* }}} */
+}
+/* }}} */
 
 /* {{{ token_module_entry */
 zend_module_entry token_module_entry = {
@@ -305,7 +307,8 @@ zend_module_entry token_module_entry = {
 	NULL, /* GSHUTDOWN */
 	NULL, /* RPOSTSHUTDOWN */
 	STANDARD_MODULE_PROPERTIES_EX
-}; /* }}} */
+};
+/* }}} */
 
 #ifdef COMPILE_DL_TOKEN
 #ifdef ZTS
